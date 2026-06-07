@@ -1,0 +1,76 @@
+/* Street View CSS Styles */
+
+/* Styles for the map marker icon */
+.street-view-person-icon {
+    background: none !important;
+    border: none;
+    box-shadow: none !important;
+  }
+  
+  .street-view-person-icon:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+  }
+  
+  /* Add shadow effect to the SVG */
+  .street-view-person-icon svg {
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+  }
+  
+  /* Pulse animation for active state */
+  .street-view-person-active {
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Style for drag button in control panel */
+  .street-view-drag-button {
+    cursor: grab;
+  }
+  
+  .street-view-drag-button:active {
+    cursor: grabbing;
+  }
+  
+  /* Floating pegman that follows the cursor */
+  .floating-street-view-icon {
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.5));
+    animation: float 0.5s infinite alternate ease-in-out;
+    pointer-events: none;
+  }
+  
+  @keyframes float {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-2px);
+    }
+  }
+  
+  /* Style for the street view cursor when in placement mode */
+  .street-view-cursor {
+    cursor: none !important;
+  }
+  
+  /* Street view overlay */
+  #street-view-overlay {
+    backdrop-filter: brightness(0.97);
+    transition: backdrop-filter 0.3s ease;
+  }
+  
+  /* Enhance visibility when dragging over valid areas */
+  #street-view-overlay:hover {
+    backdrop-filter: brightness(1.03);
+  }

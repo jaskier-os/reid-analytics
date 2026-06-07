@@ -1,0 +1,39 @@
+fires_viirs_snpp_24 | VIIRS Suomi NPP 24hrs fires/hotspots | Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_viirs_snpp_48 | VIIRS Suomi NPP 48 hrs fires/hotspots | VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_viirs_snpp_72 | VIIRS Suomi NPP 72 hrs fires/hotspots | Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_viirs_snpp_7 | VIIRS Suomi NPP 7 days fires/hotspots | Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 7 days
+fires_viirs_noaa20_24 | VIIRS NOAA-20 24 hrs fires/hotspots | Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_viirs_noaa20_48 | VIIRS NOAA-20 48 hrs fires/hotspots | Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_viirs_noaa20_72 | VIIRS NOAA-20 72 hrs fires/hotspots | Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_viirs_noaa20_7 | VIIRS NOAA-20 7 days fires/hotspots | Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_viirs_noaa21_24 | VIIRS NOAA-21 24 hrs fires/hotspots | Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_viirs_noaa21_48 | VIIRS NOAA-21 48 hrs fires/hotspots | Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_viirs_noaa21_72 | VIIRS NOAA-21 72 hrs fires/hotspots | Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_viirs_noaa21_7 | VIIRS NOAA-21 7 days fires/hotspots | Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_viirs_24 | VIIRS (S-NPP and NOAA-20) 24 hrs fires/hotspots | Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_viirs_48 | VIIRS (S-NPP and NOAA-20) 48 hrs fires/hotspots | Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_viirs_72 | VIIRS (S-NPP and NOAA-20) 72 hrs fires/hotspots | Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_viirs_7 | VIIRS (S-NPP and NOAA-20) 7 days fires/hotspots | Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_modis_24 | MODIS 24 hrs fires/hotspots | Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_modis_48 | MODIS 48 hrs fires/hotspots | Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_modis_72 | MODIS 72 hrs fires/hotspots | Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_modis_7 | MODIS 7 days fires/hotspots | Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_aqua_24 | MODIS Aqua 24 hrs fires/hotspots | Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_aqua_48 | MODIS Aqua 48 hrs fires/hotspots | Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_aqua_72 | MODIS Aqua 72 hrs fires/hotspots | Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_aqua_7 | MODIS Aqua 7 days fires/hotspots | Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_terra_24 | MODIS Terra 24 hrs fires/hotspots | Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.
+fires_terra_48 | MODIS Terra 48 hrs fires/hotspots | Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.
+fires_terra_72 | MODIS Terra 72 hrs fires/hotspots | Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.
+fires_terra_7 | MODIS Terra 7 days fires/hotspots | Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 7 days.
+fires_aqua | MODIS Aqua custom date/time range fires/hotspots | Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_terra | MODIS Terra custom date/time range fires/hotspots | Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_modis | MODIS custom date/time range fires/hotspots | Provides MODIS (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_viirs_snpp | VIIRS Suomi NPP custom date/time range fires/hotspots | Provides VIIRS S-NPP (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_viirs_noaa20 | VIIRS NOAA-20 custom date/time range fires/hotspots | Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_viirs_noaa21 | VIIRS NOAA-21 custom date/time range fires/hotspots | Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_viirs | VIIRS (S-NPP and NOAA-20) custom date/time range fires/hotspots | Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).
+fires_landsat_24 | LANDSAT 24 hrs fires/hotspots | Provides Landsat Fires/Hotspots for the past 24 hrs.
+fires_landsat_48 | LANDSAT 48 hrs fires/hotspots | Provides Landsat Fires/Hotspots for the past 48 hrs.
+fires_landsat_72 | LANDSAT 72 hrs fires/hotspots | Provides Landsat Fires/Hotspots for the past 72 hrs.
+fires_landsat_7 | LANDSAT 7 days fires/hotspots | Provides Landsat Fires/Hotspots for the past 7 days.

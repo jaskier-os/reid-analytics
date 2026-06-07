@@ -1,0 +1,989 @@
+<?xml version='1.0' encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE WMT_MS_Capabilities SYSTEM "http://schemas.opengis.net/wms/1.1.1/WMS_MS_Capabilities.dtd"
+ [
+ <!ELEMENT VendorSpecificCapabilities EMPTY>
+ ]>  <!-- end of DOCTYPE declaration -->
+
+<WMT_MS_Capabilities version="1.1.1">
+
+
+
+<Service>
+  <Name>OGC:WMS</Name>
+  <Title>NASA FIRMS WMS Fires/Hotspots</Title>
+  <Abstract>Provides MODIS, LANDSAT and VIIRS Fires/Hotspots for defined time range. Please visit https://earthdata.nasa.gov/firms for more information</Abstract>
+  <KeywordList>
+      <Keyword>fires</Keyword>
+      <Keyword>MODIS</Keyword>
+      <Keyword>VIIRS</Keyword>
+      <Keyword>LANDSAT</Keyword>
+      <Keyword>NASA</Keyword>
+      <Keyword>LANCE</Keyword>
+      <Keyword>FIRMS</Keyword>
+      <Keyword>thermal anomalies</Keyword>
+      <Keyword>wildfire</Keyword>
+  </KeywordList>
+  <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/>
+  <ContactInformation>
+    <ContactPersonPrimary>
+      <ContactPerson></ContactPerson>
+      <ContactOrganization>NASA Goddard Space Flight Center (GSFC)</ContactOrganization>
+    </ContactPersonPrimary>
+      <ContactPosition></ContactPosition>
+    <ContactAddress>
+        <AddressType></AddressType>
+        <Address></Address>
+        <City>Greenbelt</City>
+        <StateOrProvince>MD (Maryland)</StateOrProvince>
+        <PostCode></PostCode>
+        <Country>USA</Country>
+    </ContactAddress>
+      <ContactVoiceTelephone>N/A</ContactVoiceTelephone>
+      <ContactFacsimileTelephone>N/A</ContactFacsimileTelephone>
+  <ContactElectronicMailAddress>support@earthdata.nasa.gov</ContactElectronicMailAddress>
+  </ContactInformation>
+  <Fees>none</Fees>
+  <AccessConstraints>Requires free MAP_KEY subscription</AccessConstraints>
+</Service>
+
+<Capability>
+  <Request>
+    <GetCapabilities>
+      <Format>application/vnd.ogc.wms_xml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetCapabilities>
+    <GetMap>
+      <Format>image/png</Format>
+      <Format>application/x-pdf</Format>
+      <Format>image/tiff</Format>
+      <Format>image/jpeg</Format>
+      
+      
+      
+      
+      
+      
+      
+      
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetMap>
+    <GetFeatureInfo>
+      <Format>text/plain</Format>
+      <Format>application/vnd.ogc.gml</Format>
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetFeatureInfo>
+    <GetLegendGraphic>
+      <Format>image/png</Format>
+      <Format>image/jpeg</Format>
+      
+      
+      
+      <DCPType>
+        <HTTP>
+          <Get><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Get>
+          <Post><OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?"/></Post>
+        </HTTP>
+      </DCPType>
+    </GetLegendGraphic>
+  </Request>
+  <Exception>
+    <Format>application/vnd.ogc.se_xml</Format>
+    <Format>application/vnd.ogc.se_inimage</Format>
+    <Format>application/vnd.ogc.se_blank</Format>
+  </Exception>
+  <VendorSpecificCapabilities />
+  <UserDefinedSymbolization SupportSLD="1" UserLayer="0" UserStyle="1" RemoteWFS="0"/>
+  <Layer queryable="1">
+    <Name>NASA-FIRMS-Fires</Name>
+    <Title>NASA FIRMS WMS Fires/Hotspots</Title>
+    <Abstract>Provides MODIS, LANDSAT and VIIRS Fires/Hotspots for defined time range. Please visit https://earthdata.nasa.gov/firms for more information</Abstract>
+    <KeywordList>
+        <Keyword>fires</Keyword>
+        <Keyword>MODIS</Keyword>
+        <Keyword>VIIRS</Keyword>
+        <Keyword>LANDSAT</Keyword>
+        <Keyword>NASA</Keyword>
+        <Keyword>LANCE</Keyword>
+        <Keyword>FIRMS</Keyword>
+        <Keyword>thermal anomalies</Keyword>
+        <Keyword>wildfire</Keyword>
+    </KeywordList>
+    <SRS>EPSG:4326</SRS>
+    <SRS>EPSG:3857</SRS>
+    <SRS>EPSG:900913</SRS>
+    <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_snpp_24</Name>
+        <Title>VIIRS Suomi NPP 24hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_snpp_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_snpp_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_snpp_48</Name>
+        <Title>VIIRS Suomi NPP 48 hrs fires/hotspots</Title>
+        <Abstract>VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_snpp_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_snpp_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_snpp_72</Name>
+        <Title>VIIRS Suomi NPP 72 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_snpp_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_snpp_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_snpp_7</Name>
+        <Title>VIIRS Suomi NPP 7 days fires/hotspots</Title>
+        <Abstract>Provides VIIRS Suomi NPP (Rapid Response Collection) Fires/Hotspots for the past 7 days</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_snpp_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_snpp_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa20_24</Name>
+        <Title>VIIRS NOAA-20 24 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa20_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa20_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa20_48</Name>
+        <Title>VIIRS NOAA-20 48 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa20_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa20_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa20_72</Name>
+        <Title>VIIRS NOAA-20 72 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa20_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa20_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa20_7</Name>
+        <Title>VIIRS NOAA-20 7 days fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa20_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa20_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa21_24</Name>
+        <Title>VIIRS NOAA-21 24 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa21_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa21_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa21_48</Name>
+        <Title>VIIRS NOAA-21 48 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa21_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa21_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa21_72</Name>
+        <Title>VIIRS NOAA-21 72 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa21_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa21_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa21_7</Name>
+        <Title>VIIRS NOAA-21 7 days fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa21_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa21_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>fires_viirs_24</Name>
+        <Title>VIIRS (S-NPP and NOAA-20) 24 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_24"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>fires_viirs_48</Name>
+        <Title>VIIRS (S-NPP and NOAA-20) 48 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_48"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>fires_viirs_72</Name>
+        <Title>VIIRS (S-NPP and NOAA-20) 72 hrs fires/hotspots</Title>
+        <Abstract>Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_72"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>fires_viirs_7</Name>
+        <Title>VIIRS (S-NPP and NOAA-20) 7 days fires/hotspots</Title>
+        <Abstract>Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_7"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_modis_24</Name>
+        <Title>MODIS 24 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_modis_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_modis_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_modis_48</Name>
+        <Title>MODIS 48 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_modis_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_modis_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_modis_72</Name>
+        <Title>MODIS 72 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_modis_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_modis_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_modis_7</Name>
+        <Title>MODIS 7 days fires/hotspots</Title>
+        <Abstract>Provides MODIS (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_modis_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_modis_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_aqua_24</Name>
+        <Title>MODIS Aqua 24 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_aqua_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_aqua_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_aqua_48</Name>
+        <Title>MODIS Aqua 48 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_aqua_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_aqua_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_aqua_72</Name>
+        <Title>MODIS Aqua 72 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_aqua_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_aqua_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_aqua_7</Name>
+        <Title>MODIS Aqua 7 days fires/hotspots</Title>
+        <Abstract>Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_aqua_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_aqua_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_terra_24</Name>
+        <Title>MODIS Terra 24 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_terra_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_terra_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_terra_48</Name>
+        <Title>MODIS Terra 48 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_terra_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_terra_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_terra_72</Name>
+        <Title>MODIS Terra 72 hrs fires/hotspots</Title>
+        <Abstract>Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_terra_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_terra_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_terra_7</Name>
+        <Title>MODIS Terra 7 days fires/hotspots</Title>
+        <Abstract>Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_terra_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_terra_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_aqua</Name>
+        <Title>MODIS Aqua custom date/time range fires/hotspots</Title>
+        <Abstract>Provides MODIS Aqua (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_aqua"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_aqua&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_terra</Name>
+        <Title>MODIS Terra custom date/time range fires/hotspots</Title>
+        <Abstract>Provides MODIS Terra (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_terra"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_terra&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_modis</Name>
+        <Title>MODIS custom date/time range fires/hotspots</Title>
+        <Abstract>Provides MODIS (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_modis"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_modis&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_snpp</Name>
+        <Title>VIIRS Suomi NPP custom date/time range fires/hotspots</Title>
+        <Abstract>Provides VIIRS S-NPP (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_snpp"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_snpp&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa20</Name>
+        <Title>VIIRS NOAA-20 custom date/time range fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-20 (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa20"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa20&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_viirs_noaa21</Name>
+        <Title>VIIRS NOAA-21 custom date/time range fires/hotspots</Title>
+        <Abstract>Provides VIIRS NOAA-21 (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs_noaa21"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_viirs_noaa21&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>fires_viirs</Name>
+        <Title>VIIRS (S-NPP and NOAA-20) custom date/time range fires/hotspots</Title>
+        <Abstract>Provides VIIRS (S-NPP and NOAA-20) (Rapid Response Collection) Fires/Hotspots for a specific date range (YYYY-mm-dd/YYYY-mm-dd).</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_viirs"/>
+        </MetadataURL>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_landsat_24</Name>
+        <Title>LANDSAT 24 hrs fires/hotspots</Title>
+        <Abstract>Provides Landsat Fires/Hotspots for the past 24 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_landsat_24"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_landsat_24&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_landsat_48</Name>
+        <Title>LANDSAT 48 hrs fires/hotspots</Title>
+        <Abstract>Provides Landsat Fires/Hotspots for the past 48 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_landsat_48"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_landsat_48&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_landsat_72</Name>
+        <Title>LANDSAT 72 hrs fires/hotspots</Title>
+        <Abstract>Provides Landsat Fires/Hotspots for the past 72 hrs.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_landsat_72"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_landsat_72&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+    <Layer queryable="1" opaque="0" cascaded="0">
+        <Name>fires_landsat_7</Name>
+        <Title>LANDSAT 7 days fires/hotspots</Title>
+        <Abstract>Provides Landsat Fires/Hotspots for the past 7 days.</Abstract>
+        <SRS>EPSG:4326</SRS>
+        <SRS>EPSG:3857</SRS>
+        <SRS>EPSG:900913</SRS>
+        <LatLonBoundingBox minx="-180" miny="-90" maxx="180" maxy="90" />
+        <BoundingBox SRS="EPSG:4326"
+                    minx="-180" miny="-90" maxx="180" maxy="90" />
+        <MetadataURL type="TC211">
+          <Format>text/xml</Format>
+          <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?request=GetMetadata&amp;layer=fires_landsat_7"/>
+        </MetadataURL>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="114" height="23">
+             <Format>image/png</Format>
+             <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/4dd8376751ea9bf9e2ff17c786943fcd/?version=1.1.1&amp;service=WMS&amp;request=GetLegendGraphic&amp;layer=fires_landsat_7&amp;format=image/png&amp;STYLE=default"/>
+          </LegendURL>
+        </Style>
+    </Layer>
+  </Layer>
+</Capability>
+</WMT_MS_Capabilities>

@@ -1,0 +1,33 @@
+{
+    "name": "reid-analytics-backend",
+    "version": "1.0.0",
+    "description": "ReID analytics backend service",
+    "main": "mainServer.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node mainServer.js",
+        "dev": "nodemon mainServer.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^1.9.0",
+        "cheerio": "^1.0.0",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^4.17.1",
+        "express-async-handler": "^1.2.0",
+        "form-data": "^4.0.0",
+        "helmet": "^8.1.0",
+        "mongoose": "^8.23.0",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1",
+        "playwright": "^1.58.2",
+        "socket.io": "^4.8.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
+}
