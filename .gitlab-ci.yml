@@ -47,7 +47,7 @@ build:
   extends: .build-and-push
   variables:
     SERVICE: reid-analytics-backend
-    DOCKERFILE: Dockerfile
+    DOCKERFILE: backend/Dockerfile
     BUILD_CONTEXT: "backend"
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
