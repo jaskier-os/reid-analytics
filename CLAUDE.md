@@ -82,6 +82,50 @@ npm run build          # static build to dist/
 
 Docker: each app has its own `Dockerfile`.
 
+## ReID OSINT feature flags
+
+This service is the OSINT/sherlock data source behind the russia-specific ReID
+intel feature. Both flags default OFF and are set in each app's `.env`
+(`backend/.env`, `frontend/.env`; documented in the matching `.env.example`).
+
+This repo's flags:
+
+- **backend `ENABLE_OSINT`** (`backend/.env`, default `false`) -- master switch
+  for all Sherlock/OSINT functionality. When true, `backend/routes/reidRoutes.js`
+  mounts the OSINT/sherlock routes: `osint-photos`/`osint-reports`,
+  `search-phone`, `persons/batch-phone-lookup`, `persons/:id/search-info`. When
+  false (default), those routes are not mounted and return 404. (`SHERLOCK_PHONE`
+  and the FlareSolverr proxy are only used when this is on.)
+- **frontend `VITE_ENABLE_OSINT`** (`frontend/.env`, default `false`) -- shows the
+  person "OSINT" tab + its sections (`frontend/src/components/reid/PersonDetail.jsx`,
+  `OSINT_ENABLED`). Must be paired with backend `ENABLE_OSINT=true` or the OSINT
+  API routes it calls won't exist (404).
+
+### Related switches in other repos
+
+The clients that drive these lookups gate the feature on their own side with
+Android `BuildConfig` flags (set in each repo's `local.properties` or env,
+declared in `app/build.gradle.kts`, all default `false`):
+
+- **client-phone** (`jaskier-os/client-phone`):
+  - `ENABLE_REID_RU_TABS` -- shows the ReID "Phone Numbers" sub-tab + person
+    "Intel" tab in the phone UI.
+  - `ENABLE_REID_OSINT` -- enables the assistant-driven OSINT lookup tool
+    (`lookup_person_info` -> `searchPersonInfo` in `ListenerService.kt`). Core
+    face re-id is NOT gated.
+- **client-glasses** (`jaskier-os/client-glasses`):
+  - `ENABLE_REID_OSINT` -- enables the person "intel" (OSINT) request + intel
+    modal (`requestPersonIntel` in `MainActivity.kt`). Core ReID + face
+    recognition NOT gated.
+
+The phone/glasses lookups use this backend as their data source, so a client flag
+without this backend's `ENABLE_OSINT=true` yields 404s.
+
+**To enable the whole feature:** reid-analytics backend `.env`
+`ENABLE_OSINT=true`; reid-analytics frontend `.env` `VITE_ENABLE_OSINT=true`;
+phone `local.properties` `ENABLE_REID_RU_TABS=true` + `ENABLE_REID_OSINT=true`;
+glasses `local.properties` `ENABLE_REID_OSINT=true`.
+
 ## Deploy
 
 Deploy is via CI: commit + push, let GitLab CI build the Dockerfiles and bump the
