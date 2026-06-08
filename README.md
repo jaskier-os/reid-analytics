@@ -1,104 +1,66 @@
 # reid-analytics
 
-Web application for visualizing and analyzing multi-camera person re-identification
-(ReID) data. It combines a map-based analytics UI with a person catalogue, sightings
-timeline, OSINT lookup tools, and collaborative drawing layers.
+Analytics and map UI for the ReID system. `backend/` is an Express API that reads
+from reid-db-handler and its own MongoDB (for layers/maps) and proxies the
+reid-worker, storage, and orchestrator services. `frontend/` is a Vite + React
+app (Leaflet/Cesium maps, MUI) that talks to the backend. The deployed artifact is
+the `reid-analytics-backend` image; the frontend is built to static assets.
 
-The project is split into two independently deployable apps:
+## Build / run
 
-- `backend/` - Node.js / Express API. Serves layers, tiles, ReID person/sighting data
-  (proxied from the `reid-db-handler` traits API), permissions, OSINT/Telegram lookups
-  (proxied via the orchestrator service), and a Socket.IO realtime channel. Uses MongoDB
-  for storing map layers and tile cache.
-- `frontend/` - React + Vite single-page app (Leaflet/Cesium maps, MUI, Three.js 3D face
-  viewer). Talks to the backend over a dev proxy (or nginx in production).
-
-## Prerequisites
-
-- Node.js 18+ and npm
-- MongoDB 6+ (local or remote) for the backend
-- A running `reid-db-handler` (traits API) for person/sighting data
-- Optional: a running orchestrator service for Telegram/OSINT features
-- Optional: a ReID worker service and a storage/media service
-
-## Setup
-
-Each app has its own `.env`. Copy the examples and fill in values:
+Each app has its own `package.json`. Backend (Node, port 3400):
 
 ```bash
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env
-```
-
-### Backend env vars (`backend/.env`)
-
-| Var | Description |
-| --- | --- |
-| `PORT` | Port the API listens on (default 3400). |
-| `NODE_ENV` | `development` or `production`. |
-| `MONGO_URI` | MongoDB connection string for layers/tiles. |
-| `CORS_ORIGINS` | Comma-separated list of allowed browser origins. |
-| `BASE_URL` | Public base URL used to build image URLs in responses. |
-| `AUTO_SAVE_INTERVAL_LAYERS` | Layer auto-save interval in ms. |
-| `TRAITS_API_URL` | Base URL of the reid-db-handler traits API. |
-| `TRAITS_API_KEY` | API key (x-api-key) for the traits API. |
-| `REID_WORKER_URL` | Base URL of the ReID worker service. |
-| `STORAGE_SERVICE_URL` | Base URL of the storage/media service. |
-| `ORCHESTRATOR_URL` | Base URL of the orchestrator (Telegram/OSINT proxy). |
-| `API_KEY` | API key (x-api-key) sent to the orchestrator. |
-| `TELEGRAM_PHONE` | Phone number used for automated Telegram OAuth. |
-| `FLARESOLVERR_URL` | Optional FlareSolverr proxy URL for OSINT scraping. |
-
-### Frontend env vars (`frontend/.env`)
-
-| Var | Description |
-| --- | --- |
-| `VITE_BACKEND` | `local` or `remote` - selects which dev proxy target to use. |
-| `VITE_API_KEY` | API key forwarded as x-api-key when proxying to the remote backend. |
-| `VITE_REMOTE_TARGET` | Remote backend URL (used when `VITE_BACKEND=remote`). |
-| `VITE_LOCAL_TARGET` | Local backend URL (used when `VITE_BACKEND=local`). |
-
-No host/IP is hardcoded; all endpoints come from these env vars.
-
-## Build
-
-```bash
-# Backend
-cd backend && npm install
-
-# Frontend
-cd frontend && npm install && npm run build
-```
-
-## Run
-
-```bash
-# Backend (API + Socket.IO)
 cd backend
-npm run dev        # nodemon, or: npm start
-
-# Frontend (Vite dev server on port 5400)
-cd frontend
-npm run local      # proxy to VITE_LOCAL_TARGET
-# or
-npm run dev        # proxy to VITE_REMOTE_TARGET (set VITE_REMOTE_TARGET + VITE_API_KEY)
+npm install
+cp .env.example .env   # then edit
+npm run dev            # nodemon
+npm start              # node mainServer.js
 ```
 
-The production build (`frontend/dist`) is served by any static host; an nginx config and
-Dockerfiles are provided in each app folder.
+Frontend (Vite, dev server on 5173):
 
-## TLS / VPN / certificates (optional)
+```bash
+cd frontend
+npm install
+cp .env.example .env   # then edit
+npm run dev            # proxies to the remote backend (VITE_BACKEND=remote)
+npm run local          # proxies to a local backend
+npm run build          # static build to dist/
+```
 
-The app does not require any certificate or VPN to run. The frontend dev proxy uses
-`secure: false` so a self-signed remote backend works without importing a cert. For local
-development everything runs over plain HTTP against `localhost`. To talk to a secured
-remote backend, set `VITE_REMOTE_TARGET` to its `https://host:port` URL and provide
-`VITE_API_KEY`; no client certificate is needed. Optional nginx HTTP Basic Auth can be
-enabled in production by mounting an `nginx/.htpasswd` file (gitignored, never committed).
+Docker (backend only):
 
-## Notes
+```bash
+docker build -t reid-analytics-backend backend
+```
 
-- This repo was extracted from a monorepo. The backend proxies ReID data through the
-  `reid-db-handler` service and OSINT/Telegram features through the orchestrator service;
-  it never connects to those databases directly.
-- No model weights or large binaries ship with this project.
+The backend image installs Playwright + Chromium for OSINT scraping. CI builds
+`backend/Dockerfile` and bumps the `reid-analytics-backend` image tag in the
+deploy repo.
+
+## Configuration
+
+Both apps read env vars; each has its own `.env.example` as the source of truth.
+Copy to `.env` and edit.
+
+Backend - the ones that matter:
+
+- `MONGO_URI` - MongoDB for layers/maps.
+- `TRAITS_API_URL` / `TRAITS_API_KEY` - the reid-db-handler API.
+- `REID_WORKER_URL`, `STORAGE_SERVICE_URL`, `ORCHESTRATOR_URL` + `API_KEY` -
+  upstream services it proxies.
+- `PORT` (3400), `BASE_URL`, `CORS_ORIGINS`.
+
+Frontend:
+
+- `VITE_BACKEND` - `remote` or `local`, selects the proxy target.
+- `VITE_REMOTE_TARGET` / `VITE_LOCAL_TARGET` - backend URLs.
+- `VITE_API_KEY` - forwarded as `x-api-key` to the remote backend.
+
+## Dependencies
+
+- Node 18+ both apps; backend is CommonJS, frontend is ESM.
+- Backend pulls in Playwright (Chromium) for scraping and socket.io for live
+  updates. Frontend uses Cesium, Leaflet, three.js, and MUI.
+- Needs a reachable reid-db-handler and (for live data) reid-worker.
