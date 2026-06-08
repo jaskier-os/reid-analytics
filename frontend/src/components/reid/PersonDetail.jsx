@@ -59,6 +59,9 @@ import { createGazeIcon, mapSighting, groupSightingsByDay } from '../../utils/re
 
 const BACKEND_URL = '';
 
+// Sherlock / OSINT UI is hidden by default. Enable by setting VITE_ENABLE_OSINT=true.
+const OSINT_ENABLED = String(import.meta.env.VITE_ENABLE_OSINT).toLowerCase() === 'true';
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -511,7 +514,9 @@ const PersonDetail = ({ person, onClose, onPersonClick }) => {
             <Tab icon={<MapIcon fontSize="small" />} label="Map" iconPosition="start" />
             <Tab icon={<Person fontSize="small" />} label="Similar" iconPosition="start" />
             <Tab icon={<ViewInAr fontSize="small" />} label="3D Model" iconPosition="start" />
-            <Tab icon={<Policy fontSize="small" />} label="OSINT" iconPosition="start" />
+            {OSINT_ENABLED && (
+              <Tab icon={<Policy fontSize="small" />} label="OSINT" iconPosition="start" />
+            )}
           </Tabs>
 
           <Box sx={{ p: 2, flex: 1, overflow: 'auto' }}>
@@ -966,10 +971,10 @@ const PersonDetail = ({ person, onClose, onPersonClick }) => {
               <Face3DViewer personId={person.id} modelVersion={modelKey} />
             )}
 
-            {activeTab === 4 && (
+            {OSINT_ENABLED && activeTab === 4 && (
               <OsintTabPoller personId={person.id} onUpdate={setPersonData} />
             )}
-            {activeTab === 4 && (
+            {OSINT_ENABLED && activeTab === 4 && (
               <OsintTab
                 informationFound={personData.information_found}
                 personId={person.id}

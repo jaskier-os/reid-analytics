@@ -42,22 +42,31 @@ const upload = multer({
   }
 });
 
-// OSINT assets
-router.get('/osint-photos/:filename', getOsintPhoto);
-router.get('/osint-reports/:filename', getOsintReport);
+// Sherlock / OSINT features are disabled by default. Set ENABLE_OSINT=true to
+// register the OSINT/sherlock routes; otherwise they are not mounted (404).
+const OSINT_ENABLED = String(process.env.ENABLE_OSINT).toLowerCase() === 'true';
 
-// Standalone search routes
-router.post('/search-phone', searchPhone);
+if (OSINT_ENABLED) {
+  // OSINT assets
+  router.get('/osint-photos/:filename', getOsintPhoto);
+  router.get('/osint-reports/:filename', getOsintReport);
+
+  // Standalone search routes (phone-number / OSINT lookup)
+  router.post('/search-phone', searchPhone);
+  router.post('/persons/batch-phone-lookup', batchPhoneLookup);
+}
 
 // Persons routes
 router.get('/persons', getPersons);
 router.get('/persons/search', searchPersons);
 router.get('/persons/cross-search', crossSearchPersons);
-router.post('/persons/batch-phone-lookup', batchPhoneLookup);
 router.post('/persons/search/photo', upload.single('image'), searchByPhoto);
 router.put('/persons/:id', updatePerson);
 router.put('/persons/:id/information', updatePersonInformation);
-router.post('/persons/:id/search-info', searchPersonInfo);
+if (OSINT_ENABLED) {
+  // Person OSINT/sherlock info lookup
+  router.post('/persons/:id/search-info', searchPersonInfo);
+}
 router.delete('/persons/:id', deletePerson);
 router.get('/persons/:id', getPerson);
 router.get('/persons/:id/sightings', getPersonSightings);
