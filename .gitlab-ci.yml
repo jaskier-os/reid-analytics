@@ -4,7 +4,9 @@
 
 variables:
   REGISTRY: localhost:5000
-  DEPLOY_REPO: ssh://git@10.29.71.1:41922/infrastructure/deploy.git
+  # DEPLOY_HOST must be provided as a masked CI/CD variable (e.g.
+  # "git@<GITLAB_HOST>:<PORT>"); never hardcode the GitLab host here.
+  DEPLOY_REPO: ssh://${DEPLOY_HOST}/infrastructure/deploy.git
 
 stages:
   - build

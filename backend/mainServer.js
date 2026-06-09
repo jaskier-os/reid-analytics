@@ -11,8 +11,8 @@ const socketService = require('./services/socketService');
 const telegramService = require('./services/telegramService');
 const unfurlRoutes = require("./routes/unfurlRoutes");
 
-// Load environment variables (.env by default, override with DOTENV_PATH)
-require('dotenv').config({ path: process.env.DOTENV_PATH || '.env' });
+// Load environment variables (.env.prod by default, override with DOTENV_PATH)
+require('dotenv').config({ path: process.env.DOTENV_PATH || '.env.prod' });
 process.env.PORT = process.env.PORT || 3400;
 process.env.AUTO_SAVE_INTERVAL_LAYERS = process.env.AUTO_SAVE_INTERVAL_LAYERS || 300000;
 

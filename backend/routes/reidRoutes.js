@@ -53,13 +53,15 @@ if (OSINT_ENABLED) {
 
   // Standalone search routes (phone-number / OSINT lookup)
   router.post('/search-phone', searchPhone);
-  router.post('/persons/batch-phone-lookup', batchPhoneLookup);
 }
 
 // Persons routes
 router.get('/persons', getPersons);
 router.get('/persons/search', searchPersons);
 router.get('/persons/cross-search', crossSearchPersons);
+if (OSINT_ENABLED) {
+  router.post('/persons/batch-phone-lookup', batchPhoneLookup);
+}
 router.post('/persons/search/photo', upload.single('image'), searchByPhoto);
 router.put('/persons/:id', updatePerson);
 router.put('/persons/:id/information', updatePersonInformation);

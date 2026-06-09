@@ -1,0 +1,185 @@
+stages:
+  - build-deploy
+
+variables:
+  DEPLOY_BASE_DIR_FRONTEND: "/mnt/data/www/frontend"
+  DEPLOY_BASE_DIR_BACKEND: "/mnt/data/www/backend"
+  SSH_USER: "gitlab-runner"
+  SSH_HOST: "localhost"
+  SSH_PORT: 22
+  ARTIFACTS_MAX_SIZE: "1500MB"
+  NPM_CACHE_DIR: "/mnt/data/gitlab-ci-cache/npm"
+
+cache:
+  - key:
+      files:
+        - package-lock.json
+        - package.json
+    paths:
+      - node_modules/
+    policy: pull-push
+  - key: "${CI_PROJECT_NAME}-packages"
+    paths:
+      - package-lock.json
+      - package.json
+    policy: pull-push
+
+# Frontend deployment job
+deploy_frontend:
+  stage: build-deploy
+  image: node:20-slim
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "$RUNNER_SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
+  script:
+    - export TMP_DEPLOY_DIR="/tmp/$CI_PROJECT_NAME"
+    - export FINAL_DEPLOY_DIR="/var/www/frontend/$CI_PROJECT_NAME"
+
+    # Create temporary directory on server
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo rm -rf $TMP_DEPLOY_DIR && sudo mkdir -p $TMP_DEPLOY_DIR"
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo chown $SSH_USER:$SSH_USER $TMP_DEPLOY_DIR"
+
+    # Copy code to temporary directory
+    - |
+      rsync -avz --delete \
+        --exclude='node_modules' \
+        --exclude='.git' \
+        --exclude='coverage' \
+        --exclude='*.log' \
+        -e "ssh -p $SSH_PORT" \
+        ./ $SSH_USER@$SSH_HOST:$TMP_DEPLOY_DIR/
+
+    # Copy package-lock.json separately if exists
+    - if [ -f package-lock.json ]; then scp -P $SSH_PORT package-lock.json $SSH_USER@$SSH_HOST:$TMP_DEPLOY_DIR/; fi
+
+    # Create deployment script and execute
+    - |
+      cat > /tmp/frontend_deploy.sh << 'FRONTEND_SCRIPT'
+      #!/bin/bash
+      set -e
+
+      TMP_DIR="$1"
+      FINAL_DIR="$2"
+      CACHE_DIR="$3"
+      PROJECT_NAME="$4"
+
+      echo "Creating directories..."
+      mkdir -p "$FINAL_DIR" "$CACHE_DIR"
+
+      echo "Moving files to production directory..."
+      rsync -av --delete "$TMP_DIR/" "$FINAL_DIR/"
+
+      echo "Changing to production directory..."
+      cd "$FINAL_DIR"
+
+      echo "Cleaning old dependencies..."
+      rm -rf node_modules
+
+      echo "Installing dependencies..."
+      npm ci --no-audit --cache "$CACHE_DIR"
+
+      echo "Managing PM2 process..."
+      pm2 delete "$PROJECT_NAME" || true
+      pm2 start "npx vite --host" \
+        --name "$PROJECT_NAME" \
+        --cwd "$FINAL_DIR" \
+        --interpreter none
+      pm2 save
+
+      echo "Frontend deployment completed"
+      FRONTEND_SCRIPT
+
+    - scp -P $SSH_PORT /tmp/frontend_deploy.sh $SSH_USER@$SSH_HOST:/tmp/frontend_deploy.sh
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo bash /tmp/frontend_deploy.sh '$TMP_DEPLOY_DIR' '$FINAL_DEPLOY_DIR' '$NPM_CACHE_DIR' '$CI_PROJECT_NAME'"
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "rm /tmp/frontend_deploy.sh"
+
+  when: manual
+  timeout: 30m
+  only:
+    variables:
+      - $CI_PROJECT_NAME =~ /frontend/
+
+# Backend deployment job
+deploy_backend:
+  stage: build-deploy
+  image: node:20-slim
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "$RUNNER_SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $SSH_HOST >> ~/.ssh/known_hosts
+  script:
+    - export DEPLOY_DIR="$DEPLOY_BASE_DIR_BACKEND/$CI_PROJECT_NAME"
+
+    # Sync code
+    - |
+      rsync -avz --delete \
+        --exclude='node_modules' \
+        --exclude='dist' \
+        --exclude='build' \
+        --exclude='.git' \
+        --exclude='coverage' \
+        --exclude='*.log' \
+        -e "ssh -p $SSH_PORT" \
+        ./ $SSH_USER@$SSH_HOST:$DEPLOY_DIR/
+
+    - if [ -f package-lock.json ]; then scp -P $SSH_PORT package-lock.json $SSH_USER@$SSH_HOST:$DEPLOY_DIR/; fi
+
+    # Create and execute deployment script
+    - |
+      cat > /tmp/deploy_backend.sh << 'DEPLOY_SCRIPT'
+      #!/bin/bash
+      set -e
+
+      DEPLOY_DIR="$1"
+      PROJECT_NAME="$2"
+      NPM_CACHE_DIR="$3"
+
+      echo "Changing to deployment directory..."
+      cd "$DEPLOY_DIR"
+
+      echo "Cleaning old dependencies..."
+      rm -rf node_modules
+      rm package-lock.json
+
+      echo "Installing dependencies..."
+      npm i --no-audit
+
+      # Port reconfiguration
+      if [ -f .env ]; then
+        PORT=$(grep -E '^PORT=' .env | head -1 | cut -d '=' -f2 | tr -d '\r ')
+        if [[ $PORT =~ ^[0-9]+$ ]]; then
+          NEW_PORT=$((PORT - 1))
+          sed -i "s/^PORT=.*/PORT=$NEW_PORT/" .env
+          echo "PORT changed from $PORT to $NEW_PORT"
+        fi
+      fi
+
+      # PM2 restart
+      echo "Managing PM2 process..."
+      if ! pm2 restart "$PROJECT_NAME"; then
+        pm2 start npm --name "$PROJECT_NAME" -- run start
+      fi
+      pm2 save
+      echo "Backend deployment completed"
+      DEPLOY_SCRIPT
+
+    - scp -P $SSH_PORT /tmp/deploy_backend.sh $SSH_USER@$SSH_HOST:/tmp/deploy_backend.sh
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo -i bash /tmp/deploy_backend.sh '$DEPLOY_DIR' '$CI_PROJECT_NAME' '$NPM_CACHE_DIR'"
+    - ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "sudo -i rm /tmp/deploy_backend.sh"
+
+  artifacts:
+    when: on_failure
+    expire_in: 1 hour
+    paths:
+      - "*.log"
+    reports:
+      dotenv: .env.example
+
+  when: manual
+  timeout: 30m
+  except:
+    variables:
+      - $CI_PROJECT_NAME =~ /frontend/

@@ -29,3 +29,14 @@ yarn-error.log*
 
 # Runtime OSINT scrape cache (generated, may contain personal data)
 data/
+
+
+# CI trigger
+# Fri 27 Mar 01:01:38 MSK 2026
+# 1774562651
+# 1774562748
+# rebuild 1774563409
+# 1774563541
+# 1774563715
+# 1774563858
+# 1774564054
