@@ -26,6 +26,7 @@ class ReidService {
     this.apiUrl = process.env.TRAITS_API_URL || 'http://localhost:3001';
     this.apiKey = process.env.TRAITS_API_KEY || '';
     this.workerUrl = process.env.REID_WORKER_URL || 'http://localhost:5000';
+    this.streamId = process.env.REID_STREAM_ID || 'analytics-reid';
 
     this.axiosInstance = axios.create({
       baseURL: this.apiUrl,
@@ -276,9 +277,25 @@ class ReidService {
     }
   }
 
+  feedFrameAccumulator(base64) {
+    const frameUrl = `${this.workerUrl}/api/streams/${this.streamId}/frame`;
+    console.log('[reidService] REID_WORKER_FRAME imgLen=' + base64.length + ' -> ' + frameUrl);
+    axios.post(frameUrl, {
+      frame: base64
+    }, {
+      headers: { 'Content-Type': 'application/json' },
+      timeout: 5000
+    }).then((res) => {
+      console.log('[reidService] REID_WORKER_FRAME_RESP status=' + res.status + ' frame_count=' + (res.data?.frame_count ?? '?'));
+    }).catch((error) => {
+      console.error('[reidService] REID_WORKER_FRAME error: ' + error.message);
+    });
+  }
+
   async searchByPhoto(imageBuffer, threshold = 0.7, limit = 10) {
     try {
       const base64 = imageBuffer.toString('base64');
+      this.feedFrameAccumulator(base64);
       console.log('[reidService] REID_WORKER_REQ imgLen=' + base64.length + ' -> ' + this.workerUrl + '/api/identify');
       const response = await axios.post(`${this.workerUrl}/api/identify`, {
         image: base64
