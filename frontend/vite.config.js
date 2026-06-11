@@ -38,19 +38,19 @@ export default defineConfig(({ mode }) => {
       port: 5400,
       proxy: isRemote
         ? {
-            "/api/reid": {
+            // The reid-analytics backend is reachable on the VPN only behind the
+            // nginx reverse proxy at https://10.29.71.1:8444 under the single
+            // location /reid-analytics/ (which strips that prefix before hitting
+            // the backend root, port 3400). So every relative /api/* and
+            // /socket.io request the frontend makes is prefixed with
+            // /reid-analytics here. The backend mounts its routers at /api/*
+            // (e.g. /api/reid, /api/tiles, /api/layers) -- no /api/v1.
+            "/api": {
               target: remoteTarget,
               changeOrigin: true,
               secure: false,
               headers: { "x-api-key": apiKey },
-              rewrite: (path) => path.replace(/^\/api\/reid/, "/api/v1/reid"),
-            },
-            "/api/tiles": {
-              target: remoteTarget,
-              changeOrigin: true,
-              secure: false,
-              headers: { "x-api-key": apiKey },
-              rewrite: (path) => path.replace(/^\/api\/tiles/, "/api/v1/tiles"),
+              rewrite: (path) => `/reid-analytics${path}`,
             },
             "/socket.io": {
               target: remoteTarget,
