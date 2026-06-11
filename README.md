@@ -1,5 +1,7 @@
 # reid-analytics
 
+> **Docs & wiki:** [github.com/jaskier-os/docs/wiki](https://github.com/jaskier-os/docs/wiki)
+
 Analytics and map UI for the ReID system. `backend/` is an Express API that reads
 from reid-db-handler and its own MongoDB (for layers/maps) and proxies the
 reid-worker, storage, and orchestrator services. `frontend/` is a Vite + React
